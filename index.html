@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup</title>
+</head>
+<body>
+    <h1>
+        Signup
+    </h1>
+    <div>
+        <input type = "text" id="fullName" placeholder ="Full Name"> <br> <br>
+        <input type = "text" id ="emailId" placeholder="Email Id"> <br> <br>
+        <input type = "number" id ="phoneNumber" placeholder="Phone Number"> <br> <br>
+        <input type = "password" id="password" placeholder="password"> <br> <br>
+        <input type ="text" id="add" placeholder="Add"> <br> <br>
+        <button onclick="signup()">Signup</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- const fullNameElement = document.getElementById('fullName');
+const emailIdElement = document.getElementById('emailId');
+const phoneNumberElement = document.getElementById('phoneNumber');
+const passwordElement = document.getElementById('password');
+const addElement = document.getElementById('add');
+
+function signup() {
+    console.log(fullNameElement.value, emailIdElement.value, passwordElement.value, phoneNumberElement.value, addElement.value);
+    let data = {
+        fullName: fullNameElement.value,
+        email: emailIdElement.value,
+        password: passwordElement.value,
+        phoneNumber: phoneNumberElement.value,
+        add: addElement.value
+    }
+    axios.post('http://localhost:3001/signup', data).then((result) => {
+        console.log(result);
+        alert(result.data.message);
+        document.getElementById('fullName').value = '';
+        document.getElementById('emailId').value = '';
+        document.getElementById('phoneNumber').value = '';
+        document.getElementById('password').value = '';
+        document.getElementById('add').value = '';
+    }).catch((err) => {
+        console.log(err);
+    });
+
+}
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+
+const credentialsList = []
+app.post('/signup', (req, res) => {
+    const { fullName, email, password, phoneNumber, add } = req.body;
+
+    console.log(fullName, email, password, phoneNumber, add);
+    if (!fullName || !email || !phoneNumber || !password || !add) {
+        res.json({ message: "please enter valid cred" });
+        return;
+    }
+    for (let i = 0; i < credentialsList.length; i++) {
+        if (credentialsList[i].email == email) {
+            res.json({ message: "user already exist" });
+            return;
+        }
+    }
+    credentialsList.push({ fullName, email, phoneNumber, password, add });
+    console.log(credentialsList);
+    res.json({ message: "user created successfully" });
+});
+
+
+app.listen(3001, () => {
+    console.log("server is running in 3001 port");
+})
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup</title>
+</head>
+<body>
+    <h1>Signup</h1>
+    <div>
+        <input type="text" id="fullName" placeholder="Full Name"><br>
+        <input type="text" id="emailId" placeholder="Email Id"><br>
+        <input type="number" id="phoneNumber"  placeholder="Phone Number"><br>
+        <input type="password" id="password" placeholder="Password" ><br>
+        <input  type="text" id="add" placeholder="Add"><br>
+        <button onclick="signup()">Signup</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> -->
